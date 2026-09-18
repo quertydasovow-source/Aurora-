@@ -1,0 +1,31 @@
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+[functions]
+  directory = "netlify/functions"
+  node_bundler = "esbuild"
+  included_files = ["src/data/catalog.json", "src/data/opportunities.json"]
+
+[[redirects]]
+  from = "/api/health"
+  to = "/.netlify/functions/health"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/api/profile-advice"
+  to = "/.netlify/functions/profile-advice"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/api/recommendations"
+  to = "/.netlify/functions/recommendations"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
