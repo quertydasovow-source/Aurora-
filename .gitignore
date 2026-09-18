@@ -1,0 +1,51 @@
+# Secrets — never commit API keys
+.env
+.env.*
+!.env.example
+server/.env
+server/.env.local
+server/.env.*
+!server/.env.example
+server/tmp-*.json
+.dev.vars
+
+# Logs
+logs
+*.log
+.dev-err.log
+.dev-out.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Dependencies and build
+node_modules/
+dist/
+dist-ssr/
+build/
+coverage/
+*.local
+
+# Cache / temp
+.cache/
+.temp/
+.tmp/
+*.tmp
+*.bak
+.wrangler/
+.mf/
+.vite/
+
+# OS / editor
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+Thumbs.db
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
