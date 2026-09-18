@@ -1,0 +1,213 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Manrope", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-serif: "Manrope", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+
+  --color-ink: #f1f3f4;
+  --color-muted: #b0b7bf;
+  --color-paper: #101214;
+  --color-section: #191c1f;
+  --color-card: #22262a;
+  --color-line: #343a40;
+  --color-accent: #a3d9c5;
+  --color-accent-dark: #b8e5d5;
+  --color-accent-soft: #1a2420;
+  --color-accent-2: #a3d9c5;
+  --color-warn: #e1bc7b;
+  --color-warn-soft: #241f16;
+  --color-ok: #a3d9c5;
+  --color-danger: #e29a9a;
+  --color-danger-soft: #2a1c1c;
+  --color-on-accent: #11251d;
+}
+
+:root {
+  --bg: #101214;
+  --surface: #191c1f;
+  --surface-raised: #22262a;
+  --border: #343a40;
+  --text: #f1f3f4;
+  --text-secondary: #b0b7bf;
+  --accent: #a3d9c5;
+  --accent-hover: #b8e5d5;
+  --accent-text: #11251d;
+  --warning: #e1bc7b;
+  --danger: #e29a9a;
+}
+
+html {
+  color-scheme: dark;
+  overflow-x: hidden;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 1.55;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+a {
+  color: var(--accent);
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 30;
+  border-bottom: 1px solid var(--border);
+  background: var(--bg);
+}
+
+.btn-primary {
+  border-radius: 10px;
+  background: var(--accent);
+  color: var(--accent-text);
+  font-weight: 600;
+}
+.btn-primary:hover {
+  background: var(--accent-hover);
+}
+.btn-secondary {
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--text);
+}
+
+.quiz-input {
+  width: 100%;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text);
+  padding: 0.65rem 0.8rem;
+}
+
+.tabs-line {
+  display: flex;
+  gap: 0.25rem;
+  overflow-x: auto;
+  border-bottom: 1px solid var(--border);
+}
+.tab-btn {
+  padding: 0.7rem 0.9rem;
+  color: var(--text-secondary);
+  border-bottom: 2px solid transparent;
+  white-space: nowrap;
+}
+.tab-btn[aria-current='page'] {
+  color: var(--text);
+  border-bottom-color: var(--accent);
+}
+
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  padding: 0.2rem 0.65rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.next-step-card {
+  border-left: 3px solid var(--accent);
+  background: var(--surface-raised);
+}
+
+.toast {
+  position: fixed;
+  right: 1rem;
+  bottom: 1rem;
+  z-index: 40;
+  max-width: 20rem;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--surface-raised);
+  padding: 0.75rem 1rem;
+  color: var(--text);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+}
+
+.hero-aurora {
+  position: absolute;
+  inset: -10% -8% auto auto;
+  width: min(70%, 640px);
+  height: 120%;
+  pointer-events: none;
+  overflow: hidden;
+}
+.hero-aurora span {
+  position: absolute;
+  inset: 0;
+  border-radius: 40% 60%;
+  opacity: 0.28;
+  background: radial-gradient(closest-side, color-mix(in srgb, var(--accent) 55%, transparent), transparent 72%);
+  animation: aurora-shift 32s ease-in-out infinite alternate;
+}
+.hero-aurora span:nth-child(2) {
+  opacity: 0.18;
+  background: radial-gradient(closest-side at 70% 20%, color-mix(in srgb, #8fb8a8 45%, transparent), transparent 70%);
+  animation-duration: 38s;
+  animation-delay: -8s;
+}
+.hero-aurora span:nth-child(3) {
+  opacity: 0.12;
+  background: radial-gradient(closest-side at 80% 40%, color-mix(in srgb, #9ec4c8 35%, transparent), transparent 75%);
+  animation-duration: 36s;
+  animation-delay: -16s;
+}
+
+@keyframes aurora-shift {
+  from { transform: translate3d(0, 0, 0) scale(1); }
+  to { transform: translate3d(-4%, 3%, 0) scale(1.06); }
+}
+
+.page-enter {
+  animation: fade-in-up 360ms ease-out both;
+}
+@keyframes fade-in-up {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 640px) {
+  .hero-aurora span:nth-child(3) {
+    display: none;
+  }
+}
+
+.hero-aurora-paused .hero-aurora span {
+  animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-aurora span,
+  .page-enter {
+    animation: none;
+  }
+}
